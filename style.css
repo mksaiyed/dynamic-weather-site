@@ -1,0 +1,116 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  max-height: 100vh;
+  background-color: #ececec;
+}
+
+/*************************************
+Header Section
+**************************************/
+header,
+.date,
+.weather,
+nav,
+.nav-div,
+.date-side {
+  display: flex;
+}
+
+header {
+  /* justify-content: space-around; */
+  margin: auto;
+  width: 80%;
+  padding: 10px;
+}
+
+/*************************************
+Date Section
+**************************************/
+.dd {
+  font-size: 2rem;
+  width: 50px;
+  text-align: center;
+}
+
+.date {
+  margin: auto 0px;
+  width: 20%;
+  justify-content: center;
+}
+
+/*************************************
+Nav Bar Section
+**************************************/
+nav {
+  width: 80%;
+  margin: auto 0px;
+}
+
+.nav-div {
+  border: 1px solid #ddd;
+  box-shadow: 0px 0px 20px #ccc;
+  border-radius: 7px;
+  background-color: #fff;
+  width: 80%;
+  margin: auto;
+}
+
+.navdiv {
+  border-right: 2px solid #88888870;
+  padding: 10px 40px 10px 10px;
+  width: 300px;
+}
+
+.icon {
+  width: 50px;
+  padding: 0px;
+  display: flex;
+}
+
+.filter-icon {
+  margin: auto;
+}
+
+.btn {
+  width: 100px;
+  display: flex;
+  padding: 0px;
+  border-right: 0px;
+}
+
+.btn button {
+  padding: 10px;
+  display: flex;
+  /* align-self: center; */
+  margin: auto;
+  font-size: 16px;
+  background-color: #e87875;
+  border: 1px;
+  border-radius: 5px;
+  color: #fff;
+}
+
+p {
+  font-size: 13px;
+}
+
+/*************************************
+Weather Section
+**************************************/
+.weather1 {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+}
+
+.weather {
+  width: 20%;
+  margin: auto 0px;
+  text-align: center;
+  justify-content: center;
+}
