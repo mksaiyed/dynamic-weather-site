@@ -20,7 +20,7 @@
         <div class="dd"></div>
         <div>
           <div class="day"></div>
-          <div class="date-side">
+          <div class="date-side silver">
             <div class="mm"></div>
             <div class="yy"></div>
           </div>
@@ -31,43 +31,50 @@
         <div class="nav-div">
           <!-- Select Place -->
           <div class="places navdiv">
-            <p>Select Place</p>
-            <select name="places" id="places">
-              <option value="" selected disabled hidden>All Places</option>
-              <option value="Mumbai">Mumbai</option>
-              <option value="Bangalore">Bangalore</option>
-              <option value="Hyderabad">Hyderabad</option>
-              <option value="Chennai">Chennai</option>
-              <option value="New Delhi">New Delhi</option>
-              <option value="Pune">Pune</option>
-              <option value="Ahmedabad">Ahmedabad</option>
-              <option value="Kolkata">Kolkata</option>
-            </select>
+            <p class="silver">Select Place</p>
+            <div class="dropdown-box">
+              <div class="selected-box place-box">
+                <p class="selected-item">All Places</p>
+                <i class="fas fas fa-sort-down down"></i>
+              </div>
+              <div class="list-box place-list"></div>
+            </div>
           </div>
           <!-- How Many Days? -->
           <div class="days navdiv">
-            <p>How Many Days?</p>
-            <select name="days" id="days">
-              <option value="One Week" selected>One Week</option>
-              <option value="Two Week">Two Week</option>
-              <option value="1 day">1 day</option>
-              <option value="2 days">2 days</option>
-              <option value="3 days">3 days</option>
-              <option value="4 days">4 days</option>
-              <option value="5 days">5 days</option>
-            </select>
+            <p class="silver">How Many Days?</p>
+            <div class="dropdown-box">
+              <div class="selected-box day-box">
+                <p class="selected-item">One Week</p>
+                <i class="fas fas fa-sort-down down"></i>
+              </div>
+              <div class="list-box day-list">
+                <div>One Week</div>
+                <div>Two Week</div>
+                <div>1 day</div>
+                <div>2 days</div>
+                <div>3 days</div>
+                <div>4 days</div>
+                <div>5 days</div>
+              </div>
+            </div>
           </div>
           <!-- Select Date -->
           <div class="dates navdiv">
-            <p>Select Date</p>
-            <select name="dates" id="dates">
-              <option value="" selected disabled hidden>Choose Date</option>
-              <option value="1">1/2/2022</option>
-              <option value="2">2/2/2022</option>
-              <option value="3">3/2/2022</option>
-              <option value="4">4/2/2022</option>
-              <option value="5">5/2/2022</option>
-            </select>
+            <p class="silver">Select Date</p>
+            <div class="dropdown-box">
+              <div class="selected-box date-box">
+                <p class="selected-item">Choose Date</p>
+                <i class="fas fas fa-sort-down down"></i>
+              </div>
+              <div class="list-box date-list">
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+                <div>4</div>
+                <div>5</div>
+              </div>
+            </div>
           </div>
           <!-- Icon & Button  -->
 
@@ -86,14 +93,20 @@
       <!-- Weather Section -->
       <div class="weather">
         <div class="weather1">
-          <div><i class="fas fa-cloud"></i></div>
+          <div><i class="fas fa-cloud cloud"></i></div>
           <div>23&deg;</div>
         </div>
         <div>
           <div class="place-name">Mumbai</div>
-          <div>IN</div>
+          <div class="silver">IN</div>
         </div>
       </div>
     </header>
+
+    <section>
+      <div class="card-container">
+        <!-- Card -->
+      </div>
+    </section>
   </body>
 </html>
