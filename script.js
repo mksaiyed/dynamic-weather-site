@@ -32,10 +32,41 @@ document.querySelector(".mm").innerText = monthNames[mm];
 document.querySelector(".yy").innerText = yy;
 document.querySelector(".day").innerText = dayNames[day];
 
+const dateBox = document.getElementById("date-box");
+// to get value="2022-01-03"in this formate
+let date = `${yy}-${(mm + 1).toString().padStart(2, "0")}-${dd
+  .toString()
+  .padStart(2, "0")}`;
+dateBox.value = date;
+
 const cityNameList = document.querySelector(".place-list");
 const cardContainer = document.querySelector(".card-container");
+const cityName = document.querySelectorAll(".city-name");
+const cityWeather = document.querySelector(".city-weather");
+const dayName = document.querySelector(".day-name");
+const tempIcon = document.getElementById("temp-icon");
 
 (async function () {
+  // Onload Display weather of default city
+  if (cityName[0].innerText == "All Places") {
+    const defaultCity = "Ahmedabad";
+    const weatherData = await fetch(
+      `https://api.openweathermap.org/data/2.5/weather?q=${defaultCity}&appid=40db66e9bde6163ca2558b11696fd725`
+    ).then((response) => response.json());
+
+    const temp = (parseFloat(weatherData.main.temp) - 273.15).toFixed(2);
+    cityWeather.innerHTML = `${temp}&deg;`;
+    cityName[1].innerText = defaultCity;
+
+    if (temp < 15) {
+      tempIcon.innerHTML = `<i class="fas fa-snowflake"></i>`;
+    } else if ((temp > 15) & (temp < 25)) {
+      tempIcon.innerHTML = `<i class="fas fa-cloud-sun"></i `;
+    } else {
+      tempIcon.innerHTML = `<i class="fas fa-sun"></i>`;
+    }
+  }
+
   // Fetch City Names
   const cityNames = await fetch(
     "https://raw.githubusercontent.com/Dipen-Dedania/static-data/main/india-popular-city.json"
@@ -44,7 +75,8 @@ const cardContainer = document.querySelector(".card-container");
   // Add Cities in HTML
   for (let i = 0; i < cityNames.city.length; i++) {
     const div = document.createElement("div");
-    div.addEventListener("click", updateCity(this));
+    // div.addEventListener("click", updateCity(this));
+    div.setAttribute("onclick", "updateCity(this)");
     div.innerText = cityNames.city[i].name;
     cityNameList.append(div);
   }
@@ -58,9 +90,10 @@ const cardContainer = document.querySelector(".card-container");
   for (let i = 0; i < cards.length; i++) {
     const div = document.createElement("div");
     div.classList.add("card");
-    const bookmark = cards[i].isBookmark;
     div.innerHTML = `
-    <i class="${bookmark === true ? "fas" : "far"} fa-bookmark bookmark"></i>
+    <i class="${
+      cards[i].isBookmark === true ? "fas" : "far"
+    } fa-bookmark bookmark" onclick="bookmarkChange(this)"></i>
     <!-- Card Header -->
     <div>
       <p class="card-heading">${cards[i].cityName}</p>
@@ -100,7 +133,6 @@ const cardContainer = document.querySelector(".card-container");
 const listBox = document.querySelectorAll(".list-box");
 const placeList = document.querySelector(".place-list");
 const dayList = document.querySelector(".day-list");
-const dateList = document.querySelector(".date-list");
 window.addEventListener("click", (e) => {
   // console.log(e.target.parentNode.matches(".place-box"));
   // console.log(e.target.parentNode.classList.contains("place-box"));
@@ -112,7 +144,6 @@ window.addEventListener("click", (e) => {
       ? (placeList.style.display = "none")
       : (placeList.style.display = "block");
     dayList.style.display = "none";
-    dateList.style.display = "none";
   } else if (
     e.target.classList.contains("day-box") ||
     e.target.parentNode.classList.contains("day-box")
@@ -121,24 +152,56 @@ window.addEventListener("click", (e) => {
       ? (dayList.style.display = "none")
       : (dayList.style.display = "block");
     placeList.style.display = "none";
-    dateList.style.display = "none";
-  } else if (
-    e.target.classList.contains("date-box") ||
-    e.target.parentNode.classList.contains("date-box")
-  ) {
-    dateList.style.display === "block"
-      ? (dateList.style.display = "none")
-      : (dateList.style.display = "block");
-    placeList.style.display = "none";
-    dayList.style.display = "none";
   } else {
     placeList.style.display = "none";
     dayList.style.display = "none";
-    dateList.style.display = "none";
   }
 });
 
-function updateCity(e) {
-  console.log("Hii");
-  console.log(e);
+// Capture Updated city and Update The Weather
+async function updateCity(e) {
+  const name = (cityName[0].innerText = e.innerText);
+  cityName[1].innerText = name;
+  const loader = document.querySelector(".loader");
+  const weather = document.querySelector(".weather");
+  if (name != "All Places") {
+    loader.style.display = "block";
+    weather.style.display = "none";
+    const weatherData = await fetch(
+      `https://api.openweathermap.org/data/2.5/weather?q=${name}&appid=40db66e9bde6163ca2558b11696fd725`
+    )
+      .then((response) => response.json())
+      .catch((e) => alert("Sorry This city's data not found !"));
+
+    const temp = (parseFloat(weatherData.main.temp) - 273.15).toFixed(2);
+    cityWeather.innerHTML = `${temp}&deg;`;
+
+    if (temp < 15) {
+      tempIcon.innerHTML = `<i class="fas fa-snowflake"></i>`;
+    } else if ((temp > 15) & (temp < 25)) {
+      tempIcon.innerHTML = `<i class="fas fa-cloud-sun"></i `;
+    } else {
+      tempIcon.innerHTML = `<i class="fas fa-sun"></i>`;
+    }
+
+    if (weatherData != null) {
+      weather.style.display = "flex";
+      weather.style.animation = "weather 1s linear";
+      loader.style.display = "none";
+    }
+  }
+}
+
+function updateDay(e) {
+  dayName.innerText = e.innerText;
+}
+
+function bookmarkChange(e) {
+  if (e.classList.contains("far")) {
+    e.classList.remove("far");
+    e.classList.add("fas");
+  } else {
+    e.classList.remove("fas");
+    e.classList.add("far");
+  }
 }

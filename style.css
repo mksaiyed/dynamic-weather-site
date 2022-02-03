@@ -23,8 +23,6 @@ nav,
 
 header {
   margin-top: 50px;
-  /* margin: auto; */
-  /* width: 80%; */
   display: flex;
   justify-content: center;
 }
@@ -40,7 +38,6 @@ Date Section
 
 .date {
   margin: auto 0px;
-  /* width: 20%; */
   justify-content: center;
   font-size: 1.2rem;
 }
@@ -53,7 +50,6 @@ Date Section
 Nav Bar Section
 **************************************/
 nav {
-  /* width: 80%; */
   margin: auto 0px;
 }
 
@@ -62,7 +58,6 @@ nav {
   box-shadow: 0px 0px 20px #ccc;
   border-radius: 7px;
   background-color: #fff;
-  /* width: 80%; */
   margin: 0px 40px;
 }
 
@@ -111,28 +106,22 @@ nav p {
   margin-left: 5px;
 }
 
-select {
-  font-weight: bold;
-  width: 150px;
-  background-color: #fff;
-  border: none;
-  outline: none;
-  font-size: 1.1rem;
-}
-
-.dropdown-box {
-  /* display: flex; */
-}
-
 .selected-box {
   display: flex;
   justify-content: space-between;
-  width: 150px;
+  width: 160px;
 }
 
 .selected-item {
   font-size: 1.2rem;
   font-weight: bold;
+}
+
+.date-box {
+  font-weight: bold;
+  outline: none;
+  border: 1px solid #88888870;
+  border-radius: 5px;
 }
 
 .selected-box:hover {
@@ -164,6 +153,7 @@ select {
 .list-box div {
   padding: 10px;
   border-bottom: 1px solid #ddd;
+  cursor: pointer;
 }
 
 .list-box div:last-child {
@@ -176,7 +166,7 @@ Weather Section
   display: flex;
   align-items: center;
   font-size: 2.2rem;
-  margin-right: 15px;
+  margin-right: 10px;
 }
 
 .weather {
@@ -189,6 +179,33 @@ Weather Section
 .cloud {
   color: #7ec8df;
   margin-right: 10px;
+}
+
+.loader {
+  display: none;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border-top: 5px solid #e87875;
+  animation: loader 1s linear infinite;
+}
+
+@keyframes loader {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes weather {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /*************************************
@@ -290,4 +307,185 @@ section {
 .bookmark:hover {
   transform: scale(1.1);
   cursor: pointer;
+}
+
+/******************************************** 
+Footer Section  
+*******************************************/
+.footer {
+  bottom: 0px;
+  text-align: center;
+}
+
+.footer p {
+  width: 100%;
+  background-color: #888;
+  color: #fff;
+  padding: 5px;
+  font-size: 1.1rem;
+}
+
+.footer a {
+  text-decoration: none;
+  color: #00a8ff;
+}
+
+/*************************************
+Responsive View Section
+**************************************/
+
+@media (max-width: 1500px) and (min-width: 1300px) {
+  .card {
+    width: 380px;
+  }
+  .card-image {
+    width: 335px;
+    height: 210px;
+  }
+  .date {
+    font-size: 1.1rem;
+  }
+  .dd {
+    width: 35px;
+  }
+  .date {
+    font-size: 1.2rem;
+  }
+  .nav-div {
+    margin: 0px 30px;
+  }
+  .navdiv {
+    padding: 10px;
+    width: 200px;
+  }
+  .icon {
+    width: 50px;
+    padding: 0px;
+  }
+  .btn {
+    width: 90px;
+  }
+  .btn button {
+    font-size: 16px;
+  }
+  .weather1 {
+    font-size: 2rem;
+  }
+  .weather {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 1301px) and (min-width: 899px) {
+  .card-container {
+    grid-template-columns: auto auto;
+  }
+  .date {
+    position: absolute;
+    top: 50px;
+    left: 25%;
+  }
+  header {
+    margin-top: 50px;
+    margin-top: 150px;
+  }
+  .weather {
+    position: absolute;
+    top: 50px;
+    left: 55%;
+  }
+}
+
+@media (max-width: 900px) and (min-width: 300px) {
+  .card-container {
+    grid-template-columns: auto;
+  }
+  .card {
+    width: 350px;
+  }
+  .card-image {
+    width: 305px;
+    height: 180px;
+  }
+  nav {
+    position: absolute;
+    top: 120px;
+    display: block;
+  }
+  section {
+    margin-top: 350px;
+  }
+  .nav-div {
+    margin: 0px 40px;
+    display: block;
+    text-align: center;
+  }
+  .navdiv {
+    border-bottom: 2px solid #88888870;
+    padding: 10px;
+    width: 300px;
+  }
+
+  .selected-box {
+    width: 160px;
+    margin: auto;
+    margin-top: 3px;
+  }
+  .selected-item {
+    margin-right: 25px;
+  }
+  .btn {
+    padding: 10px;
+    border-bottom: 0px;
+  }
+  .btn button {
+    padding: 12px 35px;
+  }
+  .navdiv {
+    border-right: 0px;
+  }
+  .date {
+    font-size: 1rem;
+  }
+  .dd {
+    font-size: 2rem;
+  }
+  .weather {
+    font-size: 1rem;
+    margin-left: 40px;
+  }
+  .weather1 {
+    font-size: 1.8rem;
+    margin-right: 10px;
+  }
+}
+
+@media (max-width: 430px) and (min-width: 300px) {
+  .card {
+    width: 300px;
+  }
+  .card-image {
+    width: 255px;
+    height: 130px;
+  }
+  .navdiv {
+    width: 250px;
+  }
+  .selected-box {
+    width: 140px;
+  }
+  .date {
+    font-size: 0.8rem;
+  }
+  .dd {
+    font-size: 1.8rem;
+  }
+  .weather {
+    font-size: 0.8rem;
+    margin-left: 30px;
+  }
+  .weather1 {
+    font-size: 1.6rem;
+    margin-right: 10px;
+  }
 }

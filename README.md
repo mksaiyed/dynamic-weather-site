@@ -4,9 +4,19 @@ This is Responsive Dynamic Weather Website Assignment Created With Pure HTML/CSS
 
 ---
 
-### Website View
+## Website View
 
-![Website View](output.png)
+### Desktop View
+
+![Desktop View](desktop.png)
+
+### Tablet View
+
+![Tablet View](tablet.png)
+
+### Mobile View
+
+![Mobile View](mobile.png)
 
 ---
 

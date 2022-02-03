@@ -34,7 +34,7 @@
             <p class="silver">Select Place</p>
             <div class="dropdown-box">
               <div class="selected-box place-box">
-                <p class="selected-item">All Places</p>
+                <p class="selected-item city-name">All Places</p>
                 <i class="fas fas fa-sort-down down"></i>
               </div>
               <div class="list-box place-list"></div>
@@ -45,17 +45,17 @@
             <p class="silver">How Many Days?</p>
             <div class="dropdown-box">
               <div class="selected-box day-box">
-                <p class="selected-item">One Week</p>
+                <p class="selected-item day-name">One Week</p>
                 <i class="fas fas fa-sort-down down"></i>
               </div>
               <div class="list-box day-list">
-                <div>One Week</div>
-                <div>Two Week</div>
-                <div>1 day</div>
-                <div>2 days</div>
-                <div>3 days</div>
-                <div>4 days</div>
-                <div>5 days</div>
+                <div onclick="updateDay(this)">One Week</div>
+                <div onclick="updateDay(this)">Two Week</div>
+                <div onclick="updateDay(this)">1 day</div>
+                <div onclick="updateDay(this)">2 days</div>
+                <div onclick="updateDay(this)">3 days</div>
+                <div onclick="updateDay(this)">4 days</div>
+                <div onclick="updateDay(this)">5 days</div>
               </div>
             </div>
           </div>
@@ -63,16 +63,13 @@
           <div class="dates navdiv">
             <p class="silver">Select Date</p>
             <div class="dropdown-box">
-              <div class="selected-box date-box">
-                <p class="selected-item">Choose Date</p>
-                <i class="fas fas fa-sort-down down"></i>
-              </div>
-              <div class="list-box date-list">
-                <div>1</div>
-                <div>2</div>
-                <div>3</div>
-                <div>4</div>
-                <div>5</div>
+              <div class="selected-box">
+                <input
+                  type="date"
+                  name="date"
+                  id="date-box"
+                  class="selected-box date-box"
+                />
               </div>
             </div>
           </div>
@@ -93,20 +90,30 @@
       <!-- Weather Section -->
       <div class="weather">
         <div class="weather1">
-          <div><i class="fas fa-cloud cloud"></i></div>
-          <div>23&deg;</div>
+          <div id="temp-icon"></div>
+          <div class="city-weather"></div>
         </div>
         <div>
-          <div class="place-name">Mumbai</div>
+          <div class="city-name"></div>
           <div class="silver">IN</div>
         </div>
       </div>
+      <!-- weather loader -->
+      <div class="loader"></div>
     </header>
 
     <section>
       <div class="card-container">
         <!-- Card -->
       </div>
+    </section>
+
+    <!-- Footer Section -->
+    <section class="footer">
+      <p>
+        Copyright &#9400; 2021 All Rights Reserved by
+        <a href="https://github.com/mksaiyed" target="_blank">MohammadKaiF</a>.
+      </p>
     </section>
   </body>
 </html>
